@@ -1,0 +1,13 @@
+GET http://localhost:8080/all
+###
+
+POST http://localhost:8080/add
+###
+
+PUT http://localhost:8080/edit
+###
+
+DELETE http://localhost:8080/delete
+###
+
+
