@@ -1,5 +1,6 @@
 package app.invoice;
 
+import app.deliverer.DelivererEntity;
 import jakarta.persistence.*;
 
 @Table(name = "invoice")
@@ -10,16 +11,38 @@ public class InvoiceEntity {
     @GeneratedValue
     Long id;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "deliverer_id")
+    DelivererEntity deliverer;
+
     String invoiceType;
     String invoiceNumber;
-    String deliverer;
     String invoiceDate;
-    String dateOfExpiery;
-    Double amount;
+    String expiryDate;
+    Double cashAmount;
     boolean isPayed;
     String paymentDate;
+    String creationDate;
 
     public InvoiceEntity() {
+    }
+
+    public DelivererEntity getDeliverer() {
+        return deliverer;
+    }
+
+    public InvoiceEntity setDeliverer(DelivererEntity deliverer) {
+        this.deliverer = deliverer;
+        return this;
+    }
+
+    public String getCreationDate() {
+        return creationDate;
+    }
+
+    public InvoiceEntity setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
+        return this;
     }
 
     public Long getId() {
@@ -49,15 +72,6 @@ public class InvoiceEntity {
         return this;
     }
 
-    public String getDeliverer() {
-        return deliverer;
-    }
-
-    public InvoiceEntity setDeliverer(String deliverer) {
-        this.deliverer = deliverer;
-        return this;
-    }
-
     public String getInvoiceDate() {
         return invoiceDate;
     }
@@ -67,21 +81,21 @@ public class InvoiceEntity {
         return this;
     }
 
-    public String getDateOfExpiery() {
-        return dateOfExpiery;
+    public String getExpiryDate() {
+        return expiryDate;
     }
 
-    public InvoiceEntity setDateOfExpiery(String dateOfExpiery) {
-        this.dateOfExpiery = dateOfExpiery;
+    public InvoiceEntity setExpiryDate(String dateOfExpiery) {
+        this.expiryDate = dateOfExpiery;
         return this;
     }
 
-    public Double getAmount() {
-        return amount;
+    public Double getCashAmount() {
+        return cashAmount;
     }
 
-    public InvoiceEntity setAmount(Double amount) {
-        this.amount = amount;
+    public InvoiceEntity setCashAmount(Double amount) {
+        this.cashAmount = amount;
         return this;
     }
 

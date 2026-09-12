@@ -11,13 +11,12 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "invoiceType": "TEST",
-  "invoiceNumber": "TEST",
-  "deliverer": "TEST",
+  "invoiceType": "payed",
+  "invoiceNumber": "232323230",
   "invoiceDate": "2026-09-10",
-  "dateOfExpiery": "2026-09-10",
-  "amount": 111,
-  "isPayed": false,
+  "expiryDate": "2026-09-10",
+  "cashAmount": 111.11,
+  "isPayed": true,
   "paymentDate": "2026-09-10"
 }
 
@@ -28,14 +27,12 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "amount": 111.0,
-  "dateOfExpiery": "2026-09-10",
-  "deliverer": "nö",
-  "id": 152,
+  "invoiceType": "payed",
+  "invoiceNumber": "232323230",
   "invoiceDate": "2026-09-10",
-  "invoiceNumber": "TfEST",
-  "invoiceType": "TEfST",
-  "payed": true,
+  "expiryDate": "2026-09-10",
+  "cashAmount": 111.11,
+  "isPayed": true,
   "paymentDate": "2026-09-10"
 }
 ###

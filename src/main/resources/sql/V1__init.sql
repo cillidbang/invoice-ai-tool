@@ -3,6 +3,7 @@ CREATE TABLE deliverer
     id            INT PRIMARY KEY,
     company_name  VARCHAR(255),
     iban          VARCHAR(400),
+
     creation_date DATE
 );
 
@@ -15,9 +16,10 @@ CREATE TABLE invoice
     invoice_date   DATE,
     expiry_date    DATE,
     cash_amount    DECIMAL,
-    creation_date  DATE,
     is_payed       boolean,
     payment_date   DATE,
+
+    creation_date  DATE,
 
     FOREIGN KEY (deliverer_id) REFERENCES deliverer
 );

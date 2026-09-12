@@ -9,10 +9,9 @@ public class InvoiceControlHelper {
 
         existing.setInvoiceType(changes.getInvoiceType());
         existing.setInvoiceNumber(changes.getInvoiceType());
-        existing.setDeliverer(changes.getInvoiceType());
         existing.setInvoiceDate(changes.getInvoiceType());
-        existing.setDateOfExpiery(changes.getInvoiceType());
-        existing.setAmount(changes.getAmount());
+        existing.setExpiryDate(changes.getInvoiceType());
+        existing.setCashAmount(changes.getCashAmount());
         existing.setPayed(changes.isPayed());
         existing.setPaymentDate(changes.getPaymentDate());
         return existing;

@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,6 +37,7 @@ public class InvoiceControl {
     }
 
     public ResponseEntity<ResponseData<InvoiceEntity>> add(InvoiceEntity invoiceEntity) {
+        invoiceEntity.setCreationDate(LocalDateTime.now().toString());
         InvoiceEntity added = invoiceRepository.save(invoiceEntity);
         return new ResponseEntity<>(new ResponseData<>(added, "sucessful"), HttpStatus.OK);
     }
