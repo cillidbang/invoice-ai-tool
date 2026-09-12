@@ -9,11 +9,4 @@ public interface InvoiceRepository extends CrudRepository<InvoiceEntity, Long> {
 
     List<InvoiceEntity> findAll();
 
-    InvoiceEntity save(InvoiceEntity entity);
-
-    InvoiceEntity findById(long id);
-
-    InvoiceEntity deleteById(long id);
-
-
 }

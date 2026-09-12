@@ -1,13 +1,51 @@
-GET http://localhost:8080/all
+GET http://localhost:8080/invoice/all
 ###
 
-POST http://localhost:8080/add
+GET http://localhost:8080/invoice/152
+Accept: application/json
+Content-Type: application/json
 ###
 
-PUT http://localhost:8080/edit
+POST http://localhost:8080/invoice/add
+Content-Type: application/json
+Accept: application/json
+
+{
+  "invoiceType": "TEST",
+  "invoiceNumber": "TEST",
+  "deliverer": "TEST",
+  "invoiceDate": "2026-09-10",
+  "dateOfExpiery": "2026-09-10",
+  "amount": 111,
+  "isPayed": false,
+  "paymentDate": "2026-09-10"
+}
+
 ###
 
-DELETE http://localhost:8080/delete
+PUT http://localhost:8080/invoice/edit
+Content-Type: application/json
+Accept: application/json
+
+{
+  "amount": 111.0,
+  "dateOfExpiery": "2026-09-10",
+  "deliverer": "nö",
+  "id": 152,
+  "invoiceDate": "2026-09-10",
+  "invoiceNumber": "TfEST",
+  "invoiceType": "TEfST",
+  "payed": true,
+  "paymentDate": "2026-09-10"
+}
 ###
+
+DELETE http://localhost:8080/invoice/103
+Content-Type: application/json
+Accept: application/json
+###
+
+
+
 
 
