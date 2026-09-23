@@ -20,6 +20,10 @@ public class InvoiceControl {
         this.invoiceRepository = invoiceRepository;
     }
 
+    public String sayHello() {
+        return "Hello";
+    }
+
     public ResponseEntity<ResponseData<InvoiceEntity>> getById(Long id) {
 
         Optional<InvoiceEntity> entity = invoiceRepository.findById(id);
