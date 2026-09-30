@@ -47,8 +47,7 @@ public class InvoiceControl {
 
         if (existing.isEmpty()) return new ResponseEntity<>(new ResponseData<>(null, "failed"), HttpStatus.INTERNAL_SERVER_ERROR);
 
-        InvoiceEntity foundEntity = getChangedEntity(fromFe, existing.get());
-        InvoiceEntity added = invoiceRepository.save(foundEntity);
+        InvoiceEntity added = invoiceRepository.save(fromFe);
 
         return new ResponseEntity<>(new ResponseData<>(added, "sucessfully edited id: %s".formatted(added.getId())), HttpStatus.OK);
     }
