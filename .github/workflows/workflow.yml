@@ -22,5 +22,4 @@ jobs:
         with:
           distribution: temurin
           java-version: 21
-      - run: docker run --name my-h2 -d buildo/h2database
       - run: ./gradlew test
