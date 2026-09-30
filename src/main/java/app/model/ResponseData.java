@@ -1,4 +1,4 @@
-package app.invoice.stuff;
+package app.model;
 
 public class ResponseData<T> {
 

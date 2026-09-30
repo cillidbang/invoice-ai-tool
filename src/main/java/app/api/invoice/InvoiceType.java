@@ -1,4 +1,4 @@
-package app.invoice;
+package app.api.invoice;
 
 public enum InvoiceType {
     RECHNUNG,

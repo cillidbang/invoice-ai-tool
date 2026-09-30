@@ -1,6 +1,5 @@
-package app.invoice;
+package app.api.invoice;
 
-import org.jspecify.annotations.NullMarked;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

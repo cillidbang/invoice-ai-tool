@@ -1,6 +1,6 @@
-package app.invoice.stuff;
+package app.api.invoice.util;
 
-import app.invoice.InvoiceEntity;
+import app.api.invoice.InvoiceEntity;
 
 public class InvoiceControlHelper {
 

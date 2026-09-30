@@ -1,6 +1,6 @@
-package app.invoice;
+package app.api.invoice;
 
-import app.deliverer.DelivererEntity;
+import app.api.deliverer.DelivererEntity;
 import jakarta.persistence.*;
 
 @Table(name = "invoice")

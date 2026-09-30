@@ -1,4 +1,4 @@
-package app.deliverer;
+package app.api.deliverer;
 
 
 import jakarta.persistence.Entity;

@@ -1,7 +1,7 @@
-package app.invoice;
+package app.api.invoice;
 
 
-import app.invoice.stuff.ResponseData;
+import app.model.ResponseData;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,6 +1,6 @@
-package app.invoice;
+package app.api.invoice;
 
-import app.invoice.stuff.ResponseData;
+import app.model.ResponseData;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-import static app.invoice.stuff.InvoiceControlHelper.getChangedEntity;
+import static app.api.invoice.util.InvoiceControlHelper.getChangedEntity;
 
 @Service
 public class InvoiceControl {
