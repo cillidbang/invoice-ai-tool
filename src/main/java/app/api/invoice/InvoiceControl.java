@@ -1,10 +1,10 @@
 package app.api.invoice;
 
 import app.model.ResponseData;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -33,6 +33,16 @@ public class InvoiceControl {
         invoiceEntity.setCreationDate(LocalDateTime.now().toString());
         InvoiceEntity added = invoiceRepository.save(invoiceEntity);
         return ResponseEntity.ok(new ResponseData<>(added,"saved"));
+    }
+
+    public ResponseEntity<ResponseData<InvoiceEntity>> read(File file) {
+        //TODO implement a extraction
+        /**
+         * 1. Convert file
+         * 2. call llm
+         * 3. respond with structured output class InvoiceEntity
+         */
+        return null;
     }
 
     public ResponseEntity<ResponseData<InvoiceEntity>> edit(InvoiceEntity fromFe) {

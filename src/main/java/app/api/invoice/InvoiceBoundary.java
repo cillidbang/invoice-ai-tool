@@ -5,6 +5,7 @@ import app.model.ResponseData;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
 import java.util.List;
 
 @RestController
@@ -30,6 +31,10 @@ public class InvoiceBoundary {
     @PostMapping("/add")
     public ResponseEntity<ResponseData<InvoiceEntity>> add(@RequestBody InvoiceEntity invoiceEntity) {
         return invoiceControl.add(invoiceEntity);
+    }
+    @PostMapping("/import")
+    public ResponseEntity<ResponseData<InvoiceEntity>> readInvoice(@RequestBody File file) {
+        return invoiceControl.read(file);
     }
 
     @PutMapping("/edit")
