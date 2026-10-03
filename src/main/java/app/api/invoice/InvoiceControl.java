@@ -19,48 +19,45 @@ public class InvoiceControl {
     }
 
     public ResponseEntity<ResponseData<InvoiceEntity>> getById(Long id) {
-
         Optional<InvoiceEntity> entity = invoiceRepository.findById(id);
-
-        if (entity.isEmpty()) {
-            return new ResponseEntity<>(new ResponseData<>("cannot find id %s".formatted(id)), HttpStatus.OK);
-        }
+        if (entity.isEmpty()) return ResponseEntity.ok(new ResponseData<>("cannot find id: %s".formatted(id)));
         InvoiceEntity found = entity.get();
-
-        return new ResponseEntity<>(new ResponseData<>(found,"entity found"), HttpStatus.OK);
+        return ResponseEntity.ok(new ResponseData<>(found,"entity found"));
     }
 
     public ResponseEntity<ResponseData<List<InvoiceEntity>>> getAllInvoices() {
-        return new ResponseEntity<>(new ResponseData<>(invoiceRepository.findAll(), "sucessful"), HttpStatus.OK);
+        return ResponseEntity.ok(new ResponseData<>(invoiceRepository.findAll(),"entity found"));
     }
 
     public ResponseEntity<ResponseData<InvoiceEntity>> add(InvoiceEntity invoiceEntity) {
         invoiceEntity.setCreationDate(LocalDateTime.now().toString());
         InvoiceEntity added = invoiceRepository.save(invoiceEntity);
-        return new ResponseEntity<>(new ResponseData<>(added, "sucessful"), HttpStatus.OK);
+        return ResponseEntity.ok(new ResponseData<>(added,"saved"));
     }
 
     public ResponseEntity<ResponseData<InvoiceEntity>> edit(InvoiceEntity fromFe) {
         Optional<InvoiceEntity> existing = invoiceRepository.findById(fromFe.id);
 
-        if (existing.isEmpty()) return new ResponseEntity<>(new ResponseData<>(null, "failed"), HttpStatus.INTERNAL_SERVER_ERROR);
+        if (existing.isEmpty()) return ResponseEntity
+                .internalServerError()
+                .body(new ResponseData<>("saved"));
 
         InvoiceEntity added = invoiceRepository.save(fromFe);
 
-        return new ResponseEntity<>(new ResponseData<>(added, "sucessfully edited id: %s".formatted(added.getId())), HttpStatus.OK);
+        return ResponseEntity.ok(new ResponseData<>(added,"sucessfully edited id: %s".formatted(added.getId())));
     }
 
     public ResponseEntity<ResponseData<InvoiceEntity>> delete(Long id) {
         Optional<InvoiceEntity> entity = invoiceRepository.findById(id);
 
-        if (entity.isEmpty()) {
-            return new ResponseEntity<>(new ResponseData<>("cannot find id %s".formatted(id)), HttpStatus.OK);
-        }
+        if (entity.isEmpty()) return ResponseEntity
+                .badRequest()
+                .body(new ResponseData<>("cannot find id %s".formatted(id)));
 
         InvoiceEntity found = entity.get();
         invoiceRepository.delete(found);
 
-        return new ResponseEntity<>(new ResponseData<>("successfully deleted invoice with id: %s".formatted(id)), HttpStatus.OK);
+        return ResponseEntity.ok().body(new ResponseData<>("successfully deleted invoice with id: %s".formatted(id)));
     }
 
 }
