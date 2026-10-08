@@ -34,7 +34,7 @@ public class InvoiceBoundary {
     }
     @PostMapping("/import")
     public ResponseEntity<ResponseData<InvoiceEntity>> readInvoice(@RequestBody File file) {
-        return invoiceControl.read(file);
+        return invoiceControl.readInvoiceFile(file);
     }
 
     @PutMapping("/edit")

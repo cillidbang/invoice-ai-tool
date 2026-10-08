@@ -1,10 +1,13 @@
 package app.api.invoice;
 
 import app.model.ResponseData;
+import dev.langchain4j.model.openai.OpenAiChatModel;
+import dev.langchain4j.service.AiServices;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -35,13 +38,20 @@ public class InvoiceControl {
         return ResponseEntity.ok(new ResponseData<>(added,"saved"));
     }
 
-    public ResponseEntity<ResponseData<InvoiceEntity>> read(File file) {
-        //TODO implement a extraction
-        /**
-         * 1. Convert file
-         * 2. call llm
-         * 3. respond with structured output class InvoiceEntity
-         */
+    public ResponseEntity<ResponseData<InvoiceEntity>> readInvoiceFile(MultipartFile file) throws IOException {
+
+        file.getBytes();
+
+        OpenAiChatModel model = OpenAiChatModel.builder()
+                .apiKey(System.getenv("OPENAI_API_KEY"))
+                .modelName("gpt-5.1")
+                .strictJsonSchema(true)
+                .build();
+
+        InvoiceExtractor personExtractor = AiServices.create(InvoiceExtractor.class, model);
+
+        InvoiceEntity e = personExtractor.extract("1200€");
+
         return null;
     }
 
